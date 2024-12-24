@@ -7,3 +7,11 @@ docker exec -it inventory_service_container  curl http://localhost:8080
 docker ps
 docker inspect container 
 docker inspect container 44589
+
+cd order_service/
+docker build -t order_service .
+docker run -d -p 8083:8083 --name order_service_container  order_service
+docker ps
+docker inspect container order_service_container
+docker exec -it inventory_service_container
+curl https://localhost:8083//order/place?coffeeType=cappuccino&quantity=1
