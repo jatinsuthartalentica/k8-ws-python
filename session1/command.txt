@@ -1,0 +1,9 @@
+cd inventory_service/
+docker build -t inventory_service .
+docker images
+docker run -d -p 8082:8082 --name inventory_service_container  inventory_service
+curl get "http://localhost:8082"
+docker exec -it inventory_service_container  curl http://localhost:8080
+docker ps
+docker inspect container 
+docker inspect container 44589
